@@ -265,22 +265,20 @@ def lineBot(op):
                     nadya.sendMessage(to,"█████████▒... 90.0%")
                     nadya.sendMessage(to,"███████████..100.0%")
                     nadya.sendMessage(to,"บอทปกติดี(。-`ω´-)")
-                elif ".ชื่อ: " in text.lower():
-                    if msg._from in Family:
-                           proses = text.split(": ")
-                           string = text.replace(proses[0] + ": ","")
-                           profile_A = nadya.getProfile()
-                           profile_A.displayName = string
-                           nadya.updateProfile(profile_A)
-                           nadya.sendMessage(msg.to,"เปลี่ยนชื่อเป็น(。-`ω´-) " + string)
+                elif ".ชื่อ: " in msg.text.lower():
+                    spl = re.split(".ชื่อ: ",msg.text,flags=re.IGNORECASE)
+                    if spl[0] == "":
+                       prof = nadya.getProfile()
+                       prof.displayName = spl[1]
+                       nadya.updateProfile(prof)
+                       nadya.sendMessage(to, "เปลี่ยนชื่อสำเร็จแล้ว(。-`ω´-)")
                 elif ".ตัส: " in msg.text.lower():
-                    if msg._from in Family:
-                           proses = text.split(": ")
-                           string = text.replace(proses[0] + ": ","")
-                           profile_A = nadya.getProfile()
-                           profile_A.statusMessage = string
-                           nadya.updateProfile(profile_A)
-                           nadya.sendMessage(msg.to,"เปลี่ยนตัสเสร็จสิ้น(。-`ω´-)  " + string)
+                    spl = re.split(".ตัส: ",msg.text,flags=re.IGNORECASE)
+                    if spl[0] == "":
+                       prof = nadya.getProfile()
+                       prof.statusMessage = spl[1]
+                       nadya.updateProfile(prof)
+                       nadya.sendMessage(to, "เปลี่ยนชื่อสำเร็จแล้ว(。-`ω´-)")
                 elif ".ยกเลิก" == msg.text.lower():
                     if msg.toType == 2:
                         group = nadya.getGroup(msg.to)
@@ -385,12 +383,12 @@ def lineBot(op):
                 elif text.lower() == '\เช็คสติ้กเกอร์ off':
                     settings["checkSticker"] = False
                     nadya.sendMessage(to, "┏────༺ ͜͡🌟 ͜͡ ༻────┓\n     👍〘ปิดระบบเช็คสติ้กเกอร์〙🚫\n┗────༺ ͜͡🌟 ͜͡ ༻────┛")
-                elif text.lower() == '\แทค on':
-                    settings["datectMention"] = True
-                    nadya.sendMessage(to, "┏────༺ ͜͡⚡ ͜͡ ༻────┓\n      👍〘เปิดระบบการกล่าวถึง〙✔️\n┗────༺ ͜͡⚡ ͜͡ ༻────┛")
-                elif text.lower() == '\แทค off':
-                    settings["datectMention"] = False
-                    nadya.sendMessage(to, "┏────༺ ͜͡⚡ ͜͡ ༻────┓\n       👍〘ปิดระบบการกล่าวถึง〙🚫\n┗────༺ ͜͡⚡ ͜͡ ༻────┛")
+                elif msg.text in ["\แทค on"]:
+                    settings["detectMention"] = True
+                    nadya.sendMessage(to, "เปิดแทคเรียบร้อย(｀・ω・´)")
+                elif msg.text in ["\แทค off"]:
+                    settings["detectMention"] = False
+                    nadya.sendMessage(to, "ปิดแทคเรียบร้อยแล่ว(｀・ω・´)")
                 elif text.lower() == '\แทค2 on':
                     settings['potoMention'] = True
                     nadya.sendMessage(msg.to,"┏────༺ ͜͡🌩 ͜͡ ༻────┓\n      👍〘เปิดระบบส่งแทคส่งรูป〙✔️\n┗────༺ ͜͡🌩 ͜͡ ༻────┛")
