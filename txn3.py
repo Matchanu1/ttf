@@ -22,13 +22,10 @@ nadyaMID = nadya.profile.mid
 nadyaProfile = nadya.getProfile()
 lineSettings = nadya.getSettings()
 oepoll = OEPoll(nadya)
-Rfu = [nadya]
-RfuBot=[nadyaMID]
+
 admin=['uf1d4103373d5a161edf2d9d9e2d48837','ua11927d673a2ae7bab9c737e4bd206d2','ude3230559bf63a55b9c28aa20ea194e3',nadyaMID]
 Family=["uf1d4103373d5a161edf2d9d9e2d48837","ua11927d673a2ae7bab9c737e4bd206d2","ude3230559bf63a55b9c28aa20ea194e3",nadyaMID]
 superadmin=['uf1d4103373d5a161edf2d9d9e2d48837',nadyaMID]
-RfuFamily = RfuBot + Family
-KAC = [nadya]
 #==============================================================================#
 readOpen = codecs.open("read.json","r","utf-8")
 settingsOpen = codecs.open("temp.json","r","utf-8")
@@ -209,8 +206,6 @@ def lineBot(op):
                 if text is None:
                     return
 #==============================================================================#
-
-#==============================================================================#
         if op.type == 26:
             print ("[ 26 ] RECEIVE MESSAGE")
             msg = op.message
@@ -242,7 +237,6 @@ def lineBot(op):
                   if msg._from in admin:
                       helpTextToSpeech = helptexttospeech()
                       nadya.sendMessage(to, str(helpTextToSpeech))
-#==============================================================================#
 #===================SUPERADMIN================================================#
                 if "!ชื่อ: " in msg.text.lower():
                   if msg._from in superadmin:
@@ -271,7 +265,6 @@ def lineBot(op):
                       settings["changeGroupPicture"] = True
                       nadya.sendMessage(to, "ส่งรูปมา(。-`ω´-)")
 #===================SUPERADMIN================================================#
-#==============================================================================#
                 if msg.text.lower().startswith(".เตะ "):
                   if msg._from in admin:
                       targets = []
