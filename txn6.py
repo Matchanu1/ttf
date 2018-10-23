@@ -24,8 +24,8 @@ lineSettings = nadya.getSettings()
 oepoll = OEPoll(nadya)
 Rfu = [nadya]
 RfuBot=[nadyaMID]
-admin=['uf1d4103373d5a161edf2d9d9e2d48837','ua11927d673a2ae7bab9c737e4bd206d2',nadyaMID]
-Family=["uf1d4103373d5a161edf2d9d9e2d48837","ua11927d673a2ae7bab9c737e4bd206d2",nadyaMID]
+admin=['u9cff30bb3b8bd344356702e0340ce793','u9cff30bb3b8bd344356702e0340ce793',nadyaMID]
+Family=["u9cff30bb3b8bd344356702e0340ce793","u9cff30bb3b8bd344356702e0340ce793",nadyaMID]
 RfuFamily = RfuBot + Family
 #==============================================================================#
 readOpen = codecs.open("read.json","r","utf-8")
@@ -340,9 +340,8 @@ def lineBot(op):
 
                 if "ทีมงาน" == msg.text.lower():
                     msg.contentType = 13
-                    nadya.sendMessage(to, "✍️  ᴛ⃢​ᴇ⃢​ᴀ⃢​ᴍ⃢   🔝ͲᎻᎬᖴ͙͛Ꮮ͙͛ᗩ͙͛ᔑ͙͛Ꮋ͙  ̾⚡")
-                    nadya.sendContact(to, "uf1d4103373d5a161edf2d9d9e2d48837")
-                    nadya.sendContact(to, "ua11927d673a2ae7bab9c737e4bd206d2")
+                    nadya.sendMessage(to, "✍️  ᴛ⃢​ᴇ⃢​ᴀ⃢​ᴍ⃢ ")
+                    nadya.sendContact(to, "u9cff30bb3b8bd344356702e0340ce793")
 
                 if msg.text in ["Me","me","คท","!me","!Me",".me",".Me",".คท"]:
                     nadya.sendMessage(receiver, None, contentMetadata={'mid': sender}, contentType=13)
